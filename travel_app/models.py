@@ -8,4 +8,13 @@ class TripEntry(models.Model):
     def __str__(self):
         return self.name
 
+class EntryDetail(models.Model):
+    photo_url = models.TextField()
+    body = models.TextField()
+    date = models.DateField()
+    tripEntry = models.ForeignKey(TripEntry, on_delete=models.CASCADE, related_name = 'entryDetails')
+
+    def __str__(self):
+        return self.date
+
 # Create your models here.
