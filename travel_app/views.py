@@ -39,41 +39,41 @@ def trip_edit(request, pk):
 
 
   #---- Detail Views ----#
-# view all imgs
-def img_list(request): 
-    imgs = EntryDetail.objects.all()
-    return render(request, 'travel_app/img.html', {'imgs': imgs})
+# view all entries
+def entry_list(request): 
+    entries = EntryDetail.objects.all()
+    return render(request, 'travel_app/entry.html', {'entries': entries})
 
-# view img details
-def img_detail(request, pk):
-    imgs = EntryDetail.objects.get(id=pk)
-    return render(request, 'travel_app/img_detail.html', {'imgs':imgs})
+# view entry details
+def entry_detail(request, pk):
+    entries = EntryDetail.objects.get(id=pk)
+    return render(request, 'travel_app/entry_detail.html', {'entries':entries})
 
-# create img
-def img_create(request):
+# create entry
+def entry_create(request):
     if request.method == "POST":
         form = EntryDetailForm(request.POST)
         if form.is_valid():
-            fad = form.save()
-            return redirect('img_detail', pk=fad.pk)
+            entry = form.save()
+            return redirect('entry_detail', pk=entry.pk)
     else:
         form = EntryDetailForm()
-    return render(request, 'travel_app/img_form.html', {'form': form})
+    return render(request, 'travel_app/entry_form.html', {'form': form})
 
-# edit img
-def img_edit(request, pk):
-    img = EntryDetail.objects.get(id = pk)
+# edit entry
+def entry_edit(request, pk):
+    entry = EntryDetail.objects.get(id = pk)
     if request.method == "POST":
-        form = EntryDetailForm(request.POST, instance = img)
+        form = EntryDetailForm(request.POST, instance = entry)
         if form.is_valid():
             FloatField = form.save()
-            return redirect('img_detail', pk=img.pk)
+            return redirect('img_detail', pk=entry.pk)
     else:
-        form = EntryDetailForm(instance = img)
-    return render(request, 'travel_app/img_form.html', {'form': form})
+        form = EntryDetailForm(instance = entry)
+    return render(request, 'travel_app/entry_form.html', {'form': form})
 
-# delete img
-def img_delete(request, pk):
+# delete entry
+def entry_delete(request, pk):
     EntryDetail.objects.get(id=pk).delete()
-    return redirect('imgs')
+    return redirect('entries')
 
