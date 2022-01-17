@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "47270c9c3b740259323ee1270d767fb2751e7642f00b4df2fb08138c8d49f571"
+            "sha256": "4a7936707d602d7784415c49c066b12b2017b27d0a18dd613329029365f223ee"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -39,6 +39,14 @@
             ],
             "index": "pypi",
             "version": "==4.0.1"
+        },
+        "djangorestframework": {
+            "hashes": [
+                "sha256:0c33407ce23acc68eca2a6e46424b008c9c02eceb8cf18581921d0092bc1f2ee",
+                "sha256:24c4bf58ed7e85d1fe4ba250ab2da926d263cd57d64b03e8dcef0ac683f8b1aa"
+            ],
+            "index": "pypi",
+            "version": "==3.13.1"
         },
         "isort": {
             "hashes": [
@@ -191,6 +199,13 @@
             ],
             "markers": "python_full_version >= '3.6.2'",
             "version": "==0.7"
+        },
+        "pytz": {
+            "hashes": [
+                "sha256:3672058bc3453457b622aab7a1c3bfd5ab0bdae451512f6cf25f64ed37f5b87c",
+                "sha256:acad2d8b20a1af07d4e4c9d2e9285c5ed9104354062f275f3fcd88dcef4f1326"
+            ],
+            "version": "==2021.3"
         },
         "setuptools": {
             "hashes": [
