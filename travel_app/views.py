@@ -17,6 +17,6 @@ class EntryList(generics.ListCreateAPIView):
     queryset = Entry.objects.all()
     serializer_class = EntrySerializer
 
-class TripDetail(generics.RetrieveUpdateDestroyAPIView):
+class EntryDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Entry.objects.all()
     serializer_class = EntrySerializer
