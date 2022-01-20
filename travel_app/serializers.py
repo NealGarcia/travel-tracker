@@ -18,12 +18,6 @@ class EntrySerializer(serializers.HyperlinkedModelSerializer):
         fields = ('photo_url', 'body', 'date', 'trip', 'trip_id', 'id')
 
 class TripSerializer(serializers.HyperlinkedModelSerializer):
-    # entry = serializers.HyperlinkedRelatedField(
-    #     view_name='entry_detail',
-    #     many=True,
-    #     read_only=True
-    # )
-
     entry = EntrySerializer(many=True)
 
     trip_url = serializers.ModelSerializer.serializer_url_field(
