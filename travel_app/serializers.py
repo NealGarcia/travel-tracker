@@ -1,21 +1,6 @@
 from rest_framework import serializers
 from .models import Entry, Trip
 
-class TripSerializer(serializers.HyperlinkedModelSerializer):
-    entry = serializers.HyperlinkedRelatedField(
-        view_name='entry_detail',
-        many=True,
-        read_only=True
-    )
-
-    trip_url = serializers.ModelSerializer.serializer_url_field(
-            view_name = 'trip_detail'
-    )
-
-    class Meta:
-        model = Trip
-        fields = ('id', 'location', 'start_date', 'end_date', 'entry', 'trip_url',)
-
 class EntrySerializer(serializers.HyperlinkedModelSerializer):
     trip = serializers.HyperlinkedRelatedField(
         view_name='trip_detail',
@@ -30,4 +15,21 @@ class EntrySerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Entry
-        fields = ('photo_url', 'body', 'date', 'trip', 'trip_id')
+        fields = ('photo_url', 'body', 'date', 'trip', 'trip_id', 'id')
+
+class TripSerializer(serializers.HyperlinkedModelSerializer):
+    # entry = serializers.HyperlinkedRelatedField(
+    #     view_name='entry_detail',
+    #     many=True,
+    #     read_only=True
+    # )
+
+    entry = EntrySerializer(many=True)
+
+    trip_url = serializers.ModelSerializer.serializer_url_field(
+            view_name = 'trip_detail'
+    )
+
+    class Meta:
+        model = Trip
+        fields = ('id', 'location', 'start_date', 'end_date', 'entry', 'trip_url',)
