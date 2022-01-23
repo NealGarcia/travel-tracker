@@ -1,0 +1,1 @@
+web: gunicorn travel_app_django.wsgi
